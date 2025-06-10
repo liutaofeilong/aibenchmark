@@ -8,7 +8,7 @@
     "prepare": "nuxt prepare",
     "build": "nuxt build",
     "dev": "nuxt dev",
-    "start": "nuxt start",
+    "start": "node .output/server/index.mjs",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "vercel-build": "nuxt build",
@@ -18,7 +18,7 @@
     "@nuxt/image": "^1.0.0",
     "@nuxtjs/robots": "^3.0.0",
     "@nuxtjs/tailwindcss": "^6.8.0",
-    "nuxt": "^3.8.0"
+    "nuxt": "^3.x.x"
   },
   "devDependencies": {
     "@types/node": "^20.8.0",
@@ -33,7 +33,7 @@
   "author": "",
   "license": "ISC",
   "engines": {
-    "node": ">=18.0.0",
+    "node": ">=16.0.0",
     "npm": ">=9.0.0"
   }
 }
