@@ -5,13 +5,13 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "dev": "nuxt dev",
+    "prepare": "nuxt prepare",
     "build": "nuxt build",
+    "dev": "nuxt dev",
     "start": "nuxt start",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "vercel-build": "nuxt build",
-    "postinstall": "nuxt prepare",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
