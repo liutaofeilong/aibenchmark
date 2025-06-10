@@ -1,5 +1,5 @@
-/// <reference types="@nuxtjs/robots" />
 /// <reference types="@nuxtjs/tailwindcss" />
+/// <reference types="@nuxtjs/robots" />
 /// <reference types="@nuxt/image" />
 /// <reference types="@nuxt/devtools" />
 /// <reference types="@nuxt/telemetry" />

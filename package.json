@@ -33,7 +33,6 @@
   "author": "",
   "license": "ISC",
   "engines": {
-    "node": ">=16.0.0",
-    "npm": ">=9.0.0"
+    "node": "18.x"
   }
 }

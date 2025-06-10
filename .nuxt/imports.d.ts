@@ -29,5 +29,5 @@ export { withCtx, withDirectives, withKeys, withMemo, withModifiers, withScopeId
 export { requestIdleCallback, cancelIdleCallback } from '#app/compat/idle-callback';
 export { setInterval } from '#app/compat/interval';
 export { useCompanies } from '../composables/useCompanies';
-export { useImage } from '../node_modules/@nuxt/image/dist/runtime/composables';
-export { definePageMeta } from '../node_modules/nuxt/dist/pages/runtime/composables';
+export { useImage } from '../node_modules/.pnpm/@nuxt+image@1.10.0_db0@0.3.2_ioredis@5.6.1_magicast@0.3.5/node_modules/@nuxt/image/dist/runtime/composables';
+export { definePageMeta } from '../node_modules/.pnpm/nuxt@3.17.5_@parcel+watcher_eebb4fcc7e12097465ff64b1ab3e1c65/node_modules/nuxt/dist/pages/runtime/composables';
