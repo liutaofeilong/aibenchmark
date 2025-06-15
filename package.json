@@ -11,7 +11,7 @@
     "start": "node .output/server/index.mjs",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "vercel-build": "NITRO_PRESET=vercel-edge nuxt build",
+    "vercel-build": "NITRO_PRESET=vercel nuxt build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "nuxt prepare"
   },

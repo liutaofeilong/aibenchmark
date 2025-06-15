@@ -1,6 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  devtools: { enabled: true },
+  devtools: { enabled: false },
   css: ['@/assets/css/tailwind.css'],
   app: {
     head: {
@@ -67,5 +67,11 @@ export default defineNuxtConfig({
         rewrite: (path) => path.replace(/^\/api/, '')
       }
     }
+  },
+  experimental: {
+    payloadExtraction: false
+  },
+  build: {
+    transpile: ['@oxc-parser']
   }
 }) 

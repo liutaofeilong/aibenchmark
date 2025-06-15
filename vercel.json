@@ -7,10 +7,12 @@
         "serverFiles": [
           ".nuxt/dist/server/**/*",
           "server/**/*"
-        ]
+        ],
+        "generateStaticRoutes": true,
+        "excludeFiles": ["node_modules/@oxc-parser/**/*"]
       }
     }
   ],
-  "buildCommand": "NITRO_PRESET=vercel-edge nuxt build",
+  "buildCommand": "NITRO_PRESET=vercel nuxt build",
   "framework": "nuxt"
 } 
