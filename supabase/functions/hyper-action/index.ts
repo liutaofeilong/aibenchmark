@@ -1,4 +1,12 @@
+// @deno-types="https://deno.land/x/types/globals.d.ts"
 import { serve } from "./deps.ts";
+
+// Environment type definition
+declare const Deno: {
+  env: {
+    get(key: string): string | undefined;
+  };
+};
 
 const corsHeaders = {
   'Access-Control-Allow-Origin': '*',
@@ -23,29 +31,57 @@ serve(async (req) => {
       });
     }
 
-    const prompt = `Analyze the company ${company} in a structured way, including:
-1. Problem Solved
-2. Target Users
-3. Use Cases
-4. User Reviews
-5. User Acquisition
-6. Monetization
-7. Growth Strategy
-8. Areas for Optimization
-9. Scoring (Innovation, Growth, Business Model)
+    const prompt = `分析公司: ${company}
 
-Please provide a detailed analysis for each aspect.`;
+请从以下几个方面进行详细分析:
+
+1. 问题与解决方案
+- 主要问题是什么?
+- 如何解决这些问题?
+- 创新点在哪里?
+
+2. 目标用户
+- 主要用户群体
+- 用户需求
+- 使用场景
+
+3. 市场定位
+- 竞争优势
+- 市场份额
+- 行业地位
+
+4. 商业模式
+- 收入来源
+- 成本结构
+- 定价策略
+
+5. 增长策略
+- 当前阶段
+- 增长引擎
+- 未来规划
+
+6. 挑战与风险
+- 当前挑战
+- 潜在风险
+- 应对策略
+
+请提供简洁明了的分析，每个要点用一句话概括。
+
+同时请给出以下三个维度的评分(1-10分):
+- 创新评分：[1-10]
+- 增长评分：[1-10]
+- 商业评分：[1-10]`;
 
     const openRouterRes = await fetch("https://openrouter.ai/api/v1/chat/completions", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "Authorization": `Bearer ${Deno.env.get("OPENROUTER_API_KEY")}`,
-        "HTTP-Referer": "https://uqyqluzrukwoaeciupka.supabase.co", // 你的 Supabase URL
-        "X-Title": "AI Company Analysis Platform" // 你的应用名称
+        "HTTP-Referer": "https://uqyqluzrukwoaeciupka.supabase.co",
+        "X-Title": "AI Company Analysis Platform"
       },
       body: JSON.stringify({
-        model: "openai/gpt-4-turbo", // 或者使用其他模型如 "anthropic/claude-2"
+        model: "openai/gpt-4-turbo-preview",
         messages: [
           {
             role: "user",
@@ -69,7 +105,26 @@ Please provide a detailed analysis for each aspect.`;
     }
 
     const data = await openRouterRes.json();
-    return new Response(JSON.stringify(data), {
+    
+    // Extract scores from the content
+    const content = data.choices[0].message.content;
+    const scores = {
+      innovation: extractScore(content, '创新评分'),
+      growth: extractScore(content, '增长评分'),
+      business: extractScore(content, '商业评分')
+    };
+
+    // Format response
+    const response = {
+      timestamp: new Date().toISOString(),
+      company,
+      analysis: content,
+      scores,
+      model: data.model,
+      usage: data.usage
+    };
+
+    return new Response(JSON.stringify(response), {
       headers: {
         "Content-Type": "application/json",
         ...corsHeaders
@@ -83,4 +138,11 @@ Please provide a detailed analysis for each aspect.`;
       headers: corsHeaders
     });
   }
-}); 
+});
+
+// Helper function to extract scores from analysis content
+function extractScore(content: string, scoreType: string): number {
+  const regex = new RegExp(`${scoreType}[：:](\\s*)(\\d+)`);
+  const match = content.match(regex);
+  return match ? parseInt(match[2], 10) : 0;
+} 

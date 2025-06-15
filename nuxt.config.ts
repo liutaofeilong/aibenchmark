@@ -1,4 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
+import { defineNuxtConfig } from 'nuxt/config'
+
 export default defineNuxtConfig({
   devtools: { enabled: false },
   css: ['@/assets/css/tailwind.css'],
@@ -34,7 +36,7 @@ export default defineNuxtConfig({
         { rel: 'canonical', href: 'https://aibenchmark.it.com' }
       ],
       script: [
-        // Google Analytics 配置
+        // Google Analytics configuration
         {
           async: true,
           src: `https://www.googletagmanager.com/gtag/js?id=11353713047`,
@@ -55,7 +57,8 @@ export default defineNuxtConfig({
   ],
   runtimeConfig: {
     public: {
-      googleAnalyticsId: '11353713047'
+      googleAnalyticsId: '11353713047',
+      supabaseAnonKey: process.env.SUPABASE_ANON_KEY || ''
     }
   },
   nitro: {

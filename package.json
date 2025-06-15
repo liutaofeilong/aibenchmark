@@ -19,6 +19,7 @@
     "@nuxtjs/robots": "^3.0.0",
     "@nuxtjs/tailwindcss": "^6.8.0",
     "@supabase/supabase-js": "^2.38.0",
+    "mermaid": "^11.6.0",
     "nuxt": "^3.7.4",
     "vue-gtag": "^2.1.2"
   },
