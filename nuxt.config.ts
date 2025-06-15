@@ -59,19 +59,9 @@ export default defineNuxtConfig({
     }
   },
   nitro: {
-    preset: 'vercel-edge',
-    devProxy: {
-      '/api': {
-        target: 'https://uqyqluzrukwoaeciupka.supabase.co/functions/v1',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, '')
-      }
-    }
+    preset: 'vercel',
   },
-  experimental: {
-    payloadExtraction: false
-  },
-  build: {
-    transpile: ['@oxc-parser']
+  typescript: {
+    typeCheck: false
   }
 }) 

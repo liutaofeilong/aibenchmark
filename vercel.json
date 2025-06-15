@@ -1,18 +1,4 @@
 {
-  "builds": [
-    {
-      "src": "nuxt.config.ts",
-      "use": "@nuxtjs/vercel-builder",
-      "config": {
-        "serverFiles": [
-          ".nuxt/dist/server/**/*",
-          "server/**/*"
-        ],
-        "generateStaticRoutes": true,
-        "excludeFiles": ["node_modules/@oxc-parser/**/*"]
-      }
-    }
-  ],
-  "buildCommand": "NITRO_PRESET=vercel nuxt build",
-  "framework": "nuxt"
+  "framework": "nuxt",
+  "buildCommand": "NITRO_PRESET=vercel nuxt build"
 } 

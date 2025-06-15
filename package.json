@@ -12,7 +12,6 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "vercel-build": "NITRO_PRESET=vercel nuxt build",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
@@ -25,7 +24,6 @@
     "@nuxtjs/vercel-builder": "^1.0.1"
   },
   "devDependencies": {
-    "@nuxt/devtools": "latest",
     "@types/node": "^20.8.0",
     "typescript": "^5.2.2"
   },
