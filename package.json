@@ -20,8 +20,7 @@
     "@nuxtjs/tailwindcss": "^6.8.0",
     "@supabase/supabase-js": "^2.38.0",
     "nuxt": "^3.7.4",
-    "vue-gtag": "^2.1.2",
-    "@nuxtjs/vercel-builder": "^1.0.1"
+    "vue-gtag": "^2.1.2"
   },
   "devDependencies": {
     "@types/node": "^20.8.0",
