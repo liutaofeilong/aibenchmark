@@ -59,6 +59,7 @@ export default defineNuxtConfig({
     }
   },
   nitro: {
+    preset: 'vercel-edge',
     devProxy: {
       '/api': {
         target: 'https://uqyqluzrukwoaeciupka.supabase.co/functions/v1',

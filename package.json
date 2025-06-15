@@ -11,7 +11,7 @@
     "start": "node .output/server/index.mjs",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "vercel-build": "nuxt build",
+    "vercel-build": "NITRO_PRESET=vercel-edge nuxt build",
     "test": "echo \"Error: no test specified\" && exit 1",
     "postinstall": "nuxt prepare"
   },
@@ -21,7 +21,8 @@
     "@nuxtjs/tailwindcss": "^6.8.0",
     "@supabase/supabase-js": "^2.38.0",
     "nuxt": "^3.7.4",
-    "vue-gtag": "^2.1.2"
+    "vue-gtag": "^2.1.2",
+    "@nuxtjs/vercel-builder": "^1.0.1"
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
