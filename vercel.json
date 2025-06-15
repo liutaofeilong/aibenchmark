@@ -1,4 +1,3 @@
 {
-  "framework": "nextjs",
   "buildCommand": "NITRO_PRESET=vercel nuxt build"
 } 
