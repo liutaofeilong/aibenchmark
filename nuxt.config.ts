@@ -1,5 +1,6 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
+  devtools: { enabled: true },
   css: ['@/assets/css/tailwind.css'],
   app: {
     head: {
@@ -31,22 +32,39 @@ export default defineNuxtConfig({
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
         { rel: 'canonical', href: 'https://aibenchmark.it.com' }
+      ],
+      script: [
+        // Google Analytics 配置
+        {
+          async: true,
+          src: `https://www.googletagmanager.com/gtag/js?id=11353713047`,
+        },
+        {
+          innerHTML: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){dataLayer.push(arguments);}
+            gtag('js', new Date());
+            gtag('config', '11353713047');
+          `
+        }
       ]
     }
   },
   modules: [
     '@nuxtjs/tailwindcss',
-    '@nuxtjs/robots',
-    '@nuxt/image'
   ],
-  robots: {
-    UserAgent: '*',
-    Allow: '/',
-    Sitemap: 'https://aibenchmark.it.com/sitemap.xml'
+  runtimeConfig: {
+    public: {
+      googleAnalyticsId: '11353713047'
+    }
   },
   nitro: {
-    prerender: {
-      routes: ['/']
+    devProxy: {
+      '/api': {
+        target: 'https://uqyqluzrukwoaeciupka.supabase.co/functions/v1',
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/api/, '')
+      }
     }
   }
 }) 
