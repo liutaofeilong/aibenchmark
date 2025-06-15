@@ -58,7 +58,7 @@ export const useCompanyAnalysis = () => {
       }
     } catch (e) {
       console.error('Analysis error:', e)
-      error.value = e instanceof Error ? e.message : '分析过程中出现错误'
+      error.value = e instanceof Error ? e.message : 'Error occurred during analysis'
       return null
     } finally {
       isAnalyzing.value = false
