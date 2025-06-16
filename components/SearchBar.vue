@@ -19,7 +19,7 @@
             <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
             <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
           </svg>
-          分析中...
+          Analyzing...
         </span>
         <span v-else>Analyze</span>
       </button>
@@ -29,43 +29,21 @@
     <div v-if="error" class="mt-4 p-4 bg-red-100 text-red-700 rounded-lg">
       <div class="font-bold mb-2">Error:</div>
       <div class="whitespace-pre-wrap">{{ error }}</div>
+      <div v-if="debugInfo" class="mt-2 text-sm border-t border-red-200 pt-2">
+        <div class="font-semibold">Debug Information:</div>
+        <pre class="mt-1 overflow-auto">{{ debugInfo }}</pre>
+      </div>
     </div>
 
     <!-- Analysis Result -->
-    <div v-if="result" class="mt-4">
-      <div class="bg-white rounded-lg shadow-lg p-6">
-        <!-- Company Header -->
-        <div class="mb-6 pb-4 border-b border-gray-200">
-          <h2 class="text-2xl font-bold text-gray-900 mb-4">{{ searchQuery }} Analysis Report</h2>
-          <div class="grid grid-cols-3 gap-4">
-            <div class="text-center">
-              <div class="text-sm font-medium text-gray-500">Innovation Score</div>
-              <div class="mt-1 text-2xl font-semibold text-blue-600">{{ result.scores.innovation }}/10</div>
-            </div>
-            <div class="text-center">
-              <div class="text-sm font-medium text-gray-500">Growth Score</div>
-              <div class="mt-1 text-2xl font-semibold text-green-600">{{ result.scores.growth }}/10</div>
-            </div>
-            <div class="text-center">
-              <div class="text-sm font-medium text-gray-500">Business Score</div>
-              <div class="mt-1 text-2xl font-semibold text-purple-600">{{ result.scores.business }}/10</div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Analysis Content -->
-        <div class="prose max-w-none">
-          <div class="whitespace-pre-wrap">{{ result.analysis }}</div>
-        </div>
-
-        <!-- Model Info -->
-        <div class="mt-6 pt-4 border-t border-gray-200 text-sm text-gray-500">
-          <div class="flex justify-between items-center">
-            <div>Model: {{ result.model }}</div>
-            <div>Analysis Time: {{ new Date(result.timestamp).toLocaleString() }}</div>
-          </div>
-        </div>
-      </div>
+    <div v-if="result" class="mt-6">
+      <AnalysisCard
+        :company="searchQuery"
+        :analysis="result.analysis"
+        :scores="result.scores"
+        :model="result.model"
+        :timestamp="result.timestamp"
+      />
     </div>
   </div>
 </template>
@@ -73,18 +51,27 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { useCompanyAnalysis } from '~/composables/useCompanyAnalysis'
+import AnalysisCard from './AnalysisCard.vue'
 
 const searchQuery = ref('')
 const result = ref<any>(null)
+const debugInfo = ref<string>('')
 const { analyzeCompany, isAnalyzing: loading, error } = useCompanyAnalysis()
 
 const handleSearch = async () => {
   if (!searchQuery.value.trim() || loading.value) return
   
+  debugInfo.value = ''
   try {
     result.value = await analyzeCompany(searchQuery.value)
+    if (!result.value) {
+      debugInfo.value = 'Analysis returned null result'
+    } else if (!result.value.analysis) {
+      debugInfo.value = 'Analysis response missing content'
+    }
   } catch (e) {
     console.error('Error in search:', e)
+    debugInfo.value = e instanceof Error ? e.stack : String(e)
   }
 }
 </script>

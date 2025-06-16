@@ -1,22 +1,5 @@
 <template>
   <div class="min-h-screen bg-gray-50">
-    <!-- Navigation -->
-    <nav class="bg-white shadow-sm">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16 items-center">
-          <NuxtLink to="/" class="flex items-center">
-            <div class="flex items-center">
-              <img src="/logo.svg" alt="AIBenchmark Logo" class="h-10 w-10" />
-              <div class="ml-2">
-                <span class="text-xl font-semibold text-gray-700">AIBenchmark</span>
-                <span class="ml-2 text-gray-500">Competitive Analysis</span>
-              </div>
-            </div>
-          </NuxtLink>
-        </div>
-      </div>
-    </nav>
-
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div v-if="company">
         <!-- Company Header -->
@@ -35,13 +18,6 @@
                   </span>
                 </div>
               </div>
-              <button @click="shareViaEmail" 
-                      class="text-gray-400 hover:text-blue-500 transition-colors duration-200">
-                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                </svg>
-              </button>
             </div>
           </div>
         </div>
@@ -52,11 +28,22 @@
           <div class="space-y-6">
             <div class="bg-white rounded-lg shadow-lg overflow-hidden">
               <div class="p-6 space-y-6">
-                <div class="space-y-2">
-                  <h4 class="font-medium text-gray-700">Problem</h4>
-                  <p class="text-gray-600">{{ company.problem }}</p>
+                <div class="flex items-center justify-between mb-4">
+                  <div class="space-y-2">
+                    <h4 class="font-medium text-gray-700">Problem</h4>
+                    <p class="text-gray-600">{{ company.problem }}</p>
+                  </div>
+                  <button 
+                    @click="shareViaEmail"
+                    class="text-blue-600 hover:text-blue-700"
+                    title="Share via Email"
+                  >
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                    </svg>
+                  </button>
                 </div>
-
+                
                 <div class="space-y-2">
                   <h4 class="font-medium text-gray-700">Target Users</h4>
                   <p class="text-gray-600">{{ company.targetUser }}</p>
@@ -68,49 +55,21 @@
                 </div>
 
                 <div class="space-y-2">
-                  <h4 class="font-medium text-gray-700">Use Cases</h4>
-                  <p class="text-gray-600">{{ company.useCase }}</p>
-                </div>
-
-                <div class="space-y-2">
-                  <h4 class="font-medium text-gray-700">User Feedback</h4>
-                  <p class="text-gray-600">{{ company.userReviews }}</p>
-                </div>
-
-                <div class="space-y-2">
-                  <h4 class="font-medium text-gray-700">User Acquisition</h4>
-                  <p class="text-gray-600">{{ company.userAcquisition }}</p>
-                </div>
-
-                <div class="space-y-2">
-                  <h4 class="font-medium text-gray-700">Revenue Model</h4>
-                  <p class="text-gray-600">{{ company.revenue }}</p>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!-- Right Column -->
-          <div class="space-y-6">
-            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-              <div class="p-6 space-y-6">
-                <div class="space-y-2">
                   <h4 class="font-medium text-gray-700">Key Learnings</h4>
                   <p class="text-gray-600">{{ company.keyLearnings }}</p>
                 </div>
+              </div>
+            </div>
 
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+              <div class="p-6 space-y-6">
                 <div class="space-y-2">
                   <h4 class="font-medium text-gray-700">Challenges</h4>
                   <p class="text-gray-600">{{ company.challenges }}</p>
                 </div>
 
                 <div class="space-y-2">
-                  <h4 class="font-medium text-gray-700">One-line Pitch</h4>
-                  <p class="text-gray-600">{{ company.pitch }}</p>
-                </div>
-
-                <div class="space-y-2">
-                  <h4 class="font-medium text-gray-700">Monetization Strategy</h4>
+                  <h4 class="font-medium text-gray-700">Monetization</h4>
                   <p class="text-gray-600">{{ company.monetization }}</p>
                 </div>
 
@@ -125,7 +84,10 @@
                 </div>
               </div>
             </div>
+          </div>
 
+          <!-- Right Column -->
+          <div class="space-y-6">
             <!-- Scores -->
             <div class="bg-white rounded-lg shadow-lg overflow-hidden">
               <div class="p-6">
@@ -142,6 +104,36 @@
                     <div class="text-sm font-medium text-gray-500">Business</div>
                     <div class="mt-1 text-2xl font-semibold text-purple-600">{{ company.scores.business }}/10</div>
                   </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Additional Info -->
+            <div class="bg-white rounded-lg shadow-lg overflow-hidden">
+              <div class="p-6 space-y-6">
+                <div class="space-y-2">
+                  <h4 class="font-medium text-gray-700">Why Needed</h4>
+                  <p class="text-gray-600">{{ company.whyNeeded }}</p>
+                </div>
+
+                <div class="space-y-2">
+                  <h4 class="font-medium text-gray-700">Use Case</h4>
+                  <p class="text-gray-600">{{ company.useCase }}</p>
+                </div>
+
+                <div class="space-y-2">
+                  <h4 class="font-medium text-gray-700">User Reviews</h4>
+                  <p class="text-gray-600">{{ company.userReviews }}</p>
+                </div>
+
+                <div class="space-y-2">
+                  <h4 class="font-medium text-gray-700">User Acquisition</h4>
+                  <p class="text-gray-600">{{ company.userAcquisition }}</p>
+                </div>
+
+                <div class="space-y-2">
+                  <h4 class="font-medium text-gray-700">Revenue</h4>
+                  <p class="text-gray-600">{{ company.revenue }}</p>
                 </div>
               </div>
             </div>

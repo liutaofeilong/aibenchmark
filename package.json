@@ -17,10 +17,17 @@
   "dependencies": {
     "@nuxt/image": "^1.0.0",
     "@nuxtjs/robots": "^3.0.0",
+    "@nuxtjs/supabase": "^1.5.1",
     "@nuxtjs/tailwindcss": "^6.8.0",
-    "@supabase/supabase-js": "^2.38.0",
+    "@pinia/nuxt": "^0.11.1",
+    "@supabase/supabase-js": "^2.50.0",
+    "@types/nodemailer": "^6.4.17",
+    "@vueuse/core": "^13.3.0",
+    "@vueuse/nuxt": "^13.3.0",
     "mermaid": "^11.6.0",
+    "nodemailer": "^7.0.3",
     "nuxt": "^3.7.4",
+    "pinia": "^3.0.3",
     "vue-gtag": "^2.1.2"
   },
   "devDependencies": {

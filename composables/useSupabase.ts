@@ -1,7 +1,13 @@
 import { createClient } from '@supabase/supabase-js'
+import { useRuntimeConfig } from 'nuxt/app'
 
-const supabaseUrl = 'https://uqyqluzrukwoaeciupka.supabase.co'
-const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVxeXFsdXpydWt3b2FlY2l1cGthIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk0ODQ0NzQsImV4cCI6MjA2NTA2MDQ3NH0.XQ_Qdl059OzKIeRGCseq0IzFEPhzufqhVur3jhhwFfo'
+const config = useRuntimeConfig()
+const supabaseUrl = config.public.supabaseUrl as string
+const supabaseAnonKey = config.public.supabaseKey as string
+
+if (!supabaseUrl || !supabaseAnonKey) {
+  throw new Error('Missing Supabase configuration. Please check your .env file.')
+}
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey)
 

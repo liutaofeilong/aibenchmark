@@ -1,20 +1,5 @@
 <template>
   <div class="min-h-screen bg-gray-50">
-    <!-- Navigation -->
-    <nav class="bg-white shadow-sm">
-      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between h-16 items-center">
-          <div class="flex items-center">
-            <img src="/logo.svg" alt="AIBenchmark Logo" class="h-10 w-10" />
-            <div class="ml-2">
-              <span class="text-xl font-semibold text-gray-700">AIBenchmark</span>
-              <span class="ml-2 text-gray-500">Competitive Analysis</span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </nav>
-
     <!-- Main Content -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
       <div class="text-center mb-8">

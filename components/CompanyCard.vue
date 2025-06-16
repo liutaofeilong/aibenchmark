@@ -15,13 +15,6 @@
             </span>
           </div>
         </div>
-        <button @click.stop="shareViaEmail" 
-                class="text-gray-400 hover:text-blue-500 transition-colors duration-200">
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-          </svg>
-        </button>
       </div>
     </div>
 
@@ -62,15 +55,24 @@
         </div>
       </div>
 
-      <!-- View Details Button -->
-      <NuxtLink :to="'/company/' + company.id" 
-              class="mt-6 w-full bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 
-                     transition-colors duration-200 flex items-center justify-center">
-        <span>View Details</span>
-        <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
-        </svg>
-      </NuxtLink>
+      <!-- Bottom Actions -->
+      <div class="mt-6 flex items-center justify-between">
+        <NuxtLink :to="'/company/' + company.id" 
+                class="flex-1 bg-blue-600 text-white py-2 px-4 rounded-md hover:bg-blue-700 
+                       transition-colors duration-200 flex items-center justify-center mr-2">
+          <span>View Details</span>
+          <svg class="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+          </svg>
+        </NuxtLink>
+        <button @click.stop="shareViaEmail" 
+                class="p-2 text-gray-400 hover:text-blue-500 transition-colors duration-200">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+          </svg>
+        </button>
+      </div>
     </div>
   </div>
 </template>
