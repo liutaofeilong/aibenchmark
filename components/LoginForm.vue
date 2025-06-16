@@ -2,7 +2,7 @@
   <div class="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
     <div class="max-w-md w-full space-y-8">
       <div>
-        <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900">
+        <h2 class="mt-6 text-center text-4xl font-extrabold text-gray-900">
           Sign in to your account
         </h2>
       </div>
@@ -11,20 +11,20 @@
       <div>
         <button
           @click="handleGoogleLogin"
-          class="w-full flex justify-center items-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+          class="w-full flex justify-center items-center px-6 py-3 border border-gray-300 shadow-sm text-lg font-medium rounded-lg text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
         >
-          <img src="/google-icon.svg" alt="Google" class="w-5 h-5 mr-2" />
+          <img src="/google-icon.svg" alt="Google" class="w-6 h-6 mr-3" />
           Continue with Google
         </button>
       </div>
 
-      <div class="mt-6">
+      <div class="mt-8">
         <div class="relative">
           <div class="absolute inset-0 flex items-center">
             <div class="w-full border-t border-gray-300"></div>
           </div>
           <div class="relative flex justify-center text-sm">
-            <span class="px-2 bg-white text-gray-500">Or continue with email</span>
+            <span class="px-4 bg-white text-gray-600 text-lg">Or continue with email</span>
           </div>
         </div>
       </div>
@@ -40,7 +40,7 @@
               type="email"
               v-model="email"
               required
-              class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+              class="appearance-none rounded-t-lg relative block w-full px-4 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 text-lg focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10"
               placeholder="Email address"
             />
           </div>
@@ -52,7 +52,7 @@
               type="password"
               v-model="password"
               required
-              class="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10 sm:text-sm"
+              class="appearance-none rounded-b-lg relative block w-full px-4 py-3 border border-gray-300 placeholder-gray-500 text-gray-900 text-lg focus:outline-none focus:ring-blue-500 focus:border-blue-500 focus:z-10"
               placeholder="Password"
             />
           </div>
@@ -62,11 +62,11 @@
           <button
             type="submit"
             :disabled="loading"
-            class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            class="group relative w-full flex justify-center py-3 px-6 border border-transparent text-lg font-medium rounded-lg text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
           >
             <span class="absolute left-0 inset-y-0 flex items-center pl-3">
               <svg
-                class="h-5 w-5 text-blue-500 group-hover:text-blue-400"
+                class="h-6 w-6 text-blue-500 group-hover:text-blue-400"
                 xmlns="http://www.w3.org/2000/svg"
                 viewBox="0 0 20 20"
                 fill="currentColor"
@@ -85,7 +85,7 @@
       </form>
 
       <!-- Error Message -->
-      <div v-if="error" class="mt-4 text-center text-sm text-red-600">
+      <div v-if="error" class="mt-4 text-center text-base text-red-600">
         {{ error }}
       </div>
     </div>
