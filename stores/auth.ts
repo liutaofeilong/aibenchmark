@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 import { ref, computed } from 'vue'
 import type { SupabaseClient } from '@supabase/supabase-js'
+import { useRuntimeConfig } from '#app'
 
 declare global {
   const useSupabaseClient: () => SupabaseClient
@@ -19,6 +20,7 @@ export interface User {
 }
 
 export const useAuthStore = defineStore('auth', () => {
+  const config = useRuntimeConfig()
   const user = ref<User | null>(null)
   const userProfile = ref<User | null>(null)
   const isAuthenticated = computed(() => !!user.value)
@@ -46,7 +48,7 @@ export const useAuthStore = defineStore('auth', () => {
     const { data, error } = await supabase.auth.signInWithOAuth({
       provider: 'google',
       options: {
-        redirectTo: `${window.location.origin}/auth/callback`,
+        redirectTo: `${config.public.siteUrl}/auth/callback`,
         queryParams: {
           access_type: 'offline',
           prompt: 'consent',
