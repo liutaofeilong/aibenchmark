@@ -71,6 +71,13 @@ export default defineNuxtConfig({
       login: '/auth/login',
       callback: '/auth/callback',
       exclude: ['/', '/companies'],
+    },
+    cookieOptions: {
+      name: 'sb',
+      lifetime: 60 * 60 * 8,
+      domain: '',
+      path: '/',
+      sameSite: 'lax'
     }
   },
   runtimeConfig: {

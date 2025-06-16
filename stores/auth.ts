@@ -41,6 +41,23 @@ export const useAuthStore = defineStore('auth', () => {
     await fetchUserProfile()
   }
 
+  async function signInWithGoogle() {
+    const supabase = useSupabaseClient()
+    const { data, error } = await supabase.auth.signInWithOAuth({
+      provider: 'google',
+      options: {
+        queryParams: {
+          access_type: 'offline',
+          prompt: 'consent',
+        },
+        scopes: 'profile email'
+      }
+    })
+
+    if (error) throw error
+    return data
+  }
+
   async function logout() {
     const supabase = useSupabaseClient()
     const { error } = await supabase.auth.signOut()
@@ -123,6 +140,7 @@ export const useAuthStore = defineStore('auth', () => {
     userProfile,
     isAuthenticated,
     login,
+    signInWithGoogle,
     logout,
     checkSession,
     updateProfile,

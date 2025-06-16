@@ -1,5 +1,5 @@
 <template>
-  <div class="relative">
+  <div class="relative" ref="avatarRef">
     <!-- Avatar Button -->
     <button 
       @click="isOpen = !isOpen"
