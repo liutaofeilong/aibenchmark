@@ -83,7 +83,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       siteUrl: 'https://www.bmodai.shop',
-      googleClientId: '296869433229-9ldjodp1n77m5r1ohbjqhl0icc41k87g.apps.googleusercontent.com',
+      googleClientId: '296869433229-8or54ritjj9cq62va83mt9b2ttdsltq1.apps.googleusercontent.com',
       supabaseUrl: 'https://uqyqluzrukwoaeciupka.supabase.co',
       supabaseKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InVxeXFsdXpydWt3b2FlY2l1cGthIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDk0ODQ0NzQsImV4cCI6MjA2NTA2MDQ3NH0.XQ_Qdl059OzKIeRGCseq0IzFEPhzufqhVur3jhhwFfo'
     }
