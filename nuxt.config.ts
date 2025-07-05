@@ -31,7 +31,7 @@ export default defineNuxtConfig({
       ],
       link: [
         { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-        { rel: 'canonical', href: 'https://aibenchmark.it.com' }
+        { rel: 'canonical', href: 'https://www.bmodai.shop' }
       ],
       script: [
         // Google Analytics configuration
@@ -68,7 +68,7 @@ export default defineNuxtConfig({
     redirectOptions: {
       login: '/auth/login',
       callback: '/auth/callback',
-      exclude: ['/'],
+      exclude: ['/', '/sitemap.xml'],
       cookieRedirect: false,
       defaultProvider: 'google'
     },
